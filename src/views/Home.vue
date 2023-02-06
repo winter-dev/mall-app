@@ -10,6 +10,8 @@
 
 <template>
   <div>
+    <nav-bar />
+
     <header class="home-header wrap" :class="{'active' : state.headerScroll}">
       <router-link tag="i" to="./category"><i class="nbicon nbmenu2"></i></router-link>
       <div class="header-search">
@@ -22,15 +24,18 @@
         <van-icon name="manager-o" />
       </router-link>
     </header>
-    <nav-bar />
-    <swiper :list="state.swiperList"></swiper>
-    <div class="category-list">
+
+
+    <swiper :list="state.swiperList" class="ele-gap"></swiper>
+
+
+    <div class="category-list ele-gap">
       <div v-for="item in state.categoryList" v-bind:key="item.categoryId" @click="tips">
         <img :src="item.imgUrl">
         <span>{{item.name}}</span>
       </div>
     </div>
-    <div class="good">
+    <div class="good ele-gap">
       <header class="good-header">新品上线</header>
       <van-skeleton title :row="3" :loading="state.loading">
         <div class="good-box">
@@ -44,7 +49,7 @@
         </div>
       </van-skeleton>
     </div>
-    <div class="good">
+    <div class="good ele-gap">
       <header class="good-header">热门商品</header>
       <van-skeleton title :row="3" :loading="state.loading">
         <div class="good-box">
@@ -58,7 +63,7 @@
         </div>
       </van-skeleton>
     </div>
-    <div class="good" :style="{ paddingBottom: '100px'}">
+    <div class="good ele-gap" :style="{ paddingBottom: '100px'}">
       <header class="good-header">最新推荐</header>
       <van-skeleton title :row="3" :loading="state.loading">
         <div class="good-box">
@@ -176,6 +181,9 @@ const tips = () => {
 
 <style lang="less" scoped >
   @import '../common/style/mixin';
+  .ele-gap {
+    top: 50px;
+  }
   .home-header {
       position: fixed;
       left: 0;
